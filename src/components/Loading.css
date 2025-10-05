@@ -1,0 +1,9 @@
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+}
+.loading-label {
+  font-size: 14px;
+}

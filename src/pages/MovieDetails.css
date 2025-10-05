@@ -1,0 +1,77 @@
+.details-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.movie-details {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.details-poster {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.details-text .sub-meta {
+  color: var(--muted);
+  margin: 4px 0;
+}
+
+.overview {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.cast-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cast-card {
+  background: #0b1222;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cast-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  object-fit: cover;
+  background: #0b1222;
+}
+
+.cast-info {
+  padding: 8px;
+}
+
+.cast-name {
+  font-weight: 600;
+}
+
+.cast-role {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (min-width: 900px) {
+  .movie-details {
+    grid-template-columns: 220px 1fr;
+  }
+}

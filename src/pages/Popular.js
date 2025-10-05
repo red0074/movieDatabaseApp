@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react'
-import {useLocation} from 'react-router-dom'
+import {useHistory, useLocation} from 'react-router-dom'
 import {getPopular} from '../api/tmdb'
 import MovieGrid from '../components/MovieGrid'
 import Pagination from '../components/Pagination'
 import Loading from '../components/Loading'
 
 export default function Popular() {
+  const history = useHistory()
   const location = useLocation()
   const params = new URLSearchParams(location.search)
   const page = Number(params.get('page') || 1)
@@ -33,13 +34,28 @@ export default function Popular() {
     }
   }, [page])
 
+  const goToPage = next => {
+    const p = Math.max(1, Math.min(next, data?.total_pages || 1))
+    const newParams = new URLSearchParams(location.search)
+    newParams.set('page', String(p))
+    history.push(`${location.pathname}?${newParams.toString()}`)
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
+
   return (
     <section>
       <h1>Popular</h1>
       {loading && <Loading label="Loading popular movies..." />}
       {err && <p className="error">Error: {err}</p>}
       {data && <MovieGrid movies={data.results} />}
-      {data && <Pagination currentPage={page} totalPages={data.total_pages} />}
+      {data && (
+        <Pagination
+          currentPage={page}
+          totalPages={data.total_pages}
+          onPrev={() => goToPage(page - 1)}
+          onNext={() => goToPage(page + 1)}
+        />
+      )}
     </section>
   )
 }

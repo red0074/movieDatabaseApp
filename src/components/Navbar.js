@@ -29,13 +29,13 @@ export default function Navbar() {
         </h1>
         <div className="nav-links">
           <Link to="/" className="nav-link" aria-label="Popular">
-            Popular Movies
+            Home
           </Link>
           <Link to="/top-rated" className="nav-link" aria-label="Top Rated">
-            Top Rated Movies
+            Top Rated
           </Link>
           <Link to="/upcoming" className="nav-link" aria-label="Upcoming">
-            Upcoming Movies
+            Upcoming
           </Link>
         </div>
       </div>
